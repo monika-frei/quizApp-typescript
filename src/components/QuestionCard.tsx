@@ -1,6 +1,6 @@
 import React from "react";
 import { AnswerObject } from "../App";
-import { Wrapper } from "./QuesionCard.styles";
+import { Wrapper, ButtonWrapper } from "./QuesionCard.styles";
 
 type Props = {
   question: string;
@@ -30,7 +30,11 @@ const QuestionCard = ({
       ></p>
       <div>
         {answers.map((answer) => (
-          <div key={answer}>
+          <ButtonWrapper
+            correct={userAnswer?.correctAnswer === answer}
+            userClicked={userAnswer?.answer === answer}
+            key={answer}
+          >
             <button
               disabled={userAnswer ? true : false}
               value={answer}
@@ -39,7 +43,7 @@ const QuestionCard = ({
             >
               <span dangerouslySetInnerHTML={{ __html: answer }} />
             </button>
-          </div>
+          </ButtonWrapper>
         ))}
       </div>
     </Wrapper>
