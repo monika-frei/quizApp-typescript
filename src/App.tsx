@@ -19,6 +19,25 @@ function App() {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [category, setCategory] = useState<Category | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty | null>(null);
+
+  const handleOptions = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const value = e.currentTarget.value;
+    if (
+      value === Difficulty.EASY ||
+      value === Difficulty.MEDIUM ||
+      value === Difficulty.HARD
+    ) {
+      setDifficulty(value);
+    } else if (
+      value === Category.BOOKS ||
+      value === Category.FILM ||
+      value === Category.MUSIC
+    ) {
+      setCategory(value);
+    }
+  };
 
   const startTrivia = async () => {
     //zrób try catch
@@ -26,8 +45,8 @@ function App() {
     setGameOver(false);
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
-      Difficulty.EASY,
-      Category.BOOKS
+      difficulty ? difficulty : Difficulty.EASY,
+      category ? category : Category.MUSIC
     );
     setQuestions(newQuestions);
     setScore(0);
@@ -61,14 +80,76 @@ function App() {
       setQuestionNr((prev) => prev + 1);
     }
   };
+  console.log(difficulty, category);
 
   return (
     <>
       <GlobalStyle />
       <Wrapper className="App">
         <h1>Quiz</h1>
+        {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
+          <>
+            <h2>Category</h2>
+            <div className="btn-wrapper">
+              <button
+                disabled={category ? true : false}
+                value={Category.BOOKS}
+                onClick={handleOptions}
+                className="btn-options"
+              >
+                Books
+              </button>
+              <button
+                disabled={category ? true : false}
+                value={Category.FILM}
+                onClick={handleOptions}
+                className="btn-options"
+              >
+                Film
+              </button>
+              <button
+                disabled={category ? true : false}
+                value={Category.MUSIC}
+                onClick={handleOptions}
+                className="btn-options"
+              >
+                Music
+              </button>
+            </div>
+            <h2>Difficulty</h2>
+            <div className="btn-wrapper">
+              <button
+                disabled={difficulty ? true : false}
+                value={Difficulty.EASY}
+                onClick={handleOptions}
+                className="btn-options"
+              >
+                Easy
+              </button>
+              <button
+                disabled={difficulty ? true : false}
+                value={Difficulty.MEDIUM}
+                onClick={handleOptions}
+                className="btn-options"
+              >
+                Medium
+              </button>
+              <button
+                disabled={difficulty ? true : false}
+                value={Difficulty.HARD}
+                onClick={handleOptions}
+                className="btn-options"
+              >
+                Hard
+              </button>
+            </div>
+          </>
+        )}
+
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <button onClick={startTrivia}>Start</button>
+          <button onClick={startTrivia} className="btn-nav">
+            Start
+          </button>
         ) : null}
         {!gameOver && <p className="score">Score: {score}</p>}
         {loading && <p>Loading...</p>}
@@ -86,7 +167,9 @@ function App() {
           !gameOver &&
           userAnswers.length === questionNr + 1 &&
           questionNr !== TOTAL_QUESTIONS - 1 && (
-            <button onClick={nextQuestion}>Next</button>
+            <button onClick={nextQuestion} className="btn-nav">
+              Next
+            </button>
           )}
       </Wrapper>
     </>
