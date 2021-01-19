@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/static/js/main.42ed9a39.chunk.js",
-    "main.js.map": "/static/js/main.42ed9a39.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4d25ba2e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4d25ba2e.js.map",
-    "static/js/2.565f3d1f.chunk.js": "/static/js/2.565f3d1f.chunk.js",
-    "static/js/2.565f3d1f.chunk.js.map": "/static/js/2.565f3d1f.chunk.js.map",
-    "index.html": "/index.html",
-    "static/js/2.565f3d1f.chunk.js.LICENSE.txt": "/static/js/2.565f3d1f.chunk.js.LICENSE.txt"
+    "main.js": "/quizApp-typescript/build/static/js/main.42ed9a39.chunk.js",
+    "main.js.map": "/quizApp-typescript/build/static/js/main.42ed9a39.chunk.js.map",
+    "runtime-main.js": "/quizApp-typescript/build/static/js/runtime-main.53823beb.js",
+    "runtime-main.js.map": "/quizApp-typescript/build/static/js/runtime-main.53823beb.js.map",
+    "static/js/2.342ac3f0.chunk.js": "/quizApp-typescript/build/static/js/2.342ac3f0.chunk.js",
+    "static/js/2.342ac3f0.chunk.js.map": "/quizApp-typescript/build/static/js/2.342ac3f0.chunk.js.map",
+    "index.html": "/quizApp-typescript/build/index.html",
+    "static/js/2.342ac3f0.chunk.js.LICENSE.txt": "/quizApp-typescript/build/static/js/2.342ac3f0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4d25ba2e.js",
-    "static/js/2.565f3d1f.chunk.js",
+    "static/js/runtime-main.53823beb.js",
+    "static/js/2.342ac3f0.chunk.js",
     "static/js/main.42ed9a39.chunk.js"
   ]
 }
